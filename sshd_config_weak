@@ -1,0 +1,25 @@
+Port 2222
+Protocol 2
+
+PermitRootLogin no
+PasswordAuthentication yes
+PubkeyAuthentication yes
+
+AllowUsers window testuser
+AllowGroups sudo testuser
+
+# ---- Timing & Attempts (IMPORTANT CHANGES) ----
+LoginGraceTime 60        # was 20 → now 60 seconds
+MaxAuthTries 5           # was 3 → allow more attempts for detection
+MaxSessions 3            # slightly higher for realism
+
+# ---- Connection Lifetime ----
+ClientAliveInterval 120  # keep session alive
+ClientAliveCountMax 3    # total ~6 minutes idle allowed
+
+UseDNS no
+X11Forwarding no
+AllowTcpForwarding no
+
+SyslogFacility AUTH
+LogLevel VERBOSE
