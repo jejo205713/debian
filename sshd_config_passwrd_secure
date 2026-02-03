@@ -1,0 +1,38 @@
+# =============================
+# SSH – Password Based (Hardened)
+# =============================
+
+Port 2222
+Protocol 2
+
+# ---- Authentication ----
+PermitRootLogin no
+PasswordAuthentication yes
+PubkeyAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+
+# ---- Access Control ----
+AllowUsers testuser window
+
+# ---- Brute Force Resistance ----
+LoginGraceTime 20
+MaxAuthTries 3
+MaxSessions 2
+
+# ---- Connection Handling ----
+ClientAliveInterval 300
+ClientAliveCountMax 0
+
+# ---- Attack Surface Reduction ----
+X11Forwarding no
+AllowTcpForwarding no
+PermitTunnel no
+AllowAgentForwarding no
+PermitUserEnvironment no
+
+# ---- Logging ----
+SyslogFacility AUTH
+LogLevel VERBOSE
+
+UseDNS no
